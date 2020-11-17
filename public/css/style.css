@@ -1,0 +1,122 @@
+.admin .footer {
+    background-color: #f7f7f7;
+}
+.admin img.img-thumbnail {
+    max-height:80px;
+}
+.admin .gallery .image-wrapper {
+    max-height:193px;
+    width:100%;
+    overflow: hidden;
+}
+.admin .gallery img.img-thumbnail {
+    max-height:100%;
+}
+.admin .gallery .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+.admin .gallery .delete-image svg {
+    width: 13px;
+    height: 14px;
+}
+.admin .gallery .edit-image {
+    position:relative;
+    margin-right:.5rem;
+}
+.admin .gallery .edit-file-input {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:2;
+    height:30px;
+    opacity:0;
+    -moz-opacity: 0;
+    width: 100%;
+}
+
+.admin .gallery .edit-image svg {
+    width:15px;
+    margin-right: -2px;
+    margin-top:-2px;
+}
+.admin .gallery .d-block {
+    position:relative;
+}
+.admin .gallery .d-block .delete-image {
+
+}
+.admin .gallery .d-block .edit-image {
+
+}
+.admin .gallery .d-block .card-body {
+    padding:.5rem 0 0;
+}
+.admin .gallery .d-block .card-body form {
+    display: inline-block;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+.admin .navbar-nav li:hover>.dropdown-menu {
+    display: block;
+}
+.admin .dropdown-menu {
+    margin:0;
+}
+.admin .navbar-nav .nav-item .h4 {
+    font-size: .9rem;
+}
+.admin .navbar-nav .nav-item svg {
+    display: none;
+}
+.admin h2 span {
+    font-size: 20px;
+    color: #6c757d;
+}
+.custom-file-input ~ .custom-file-label[data-browse]::after {
+    content: attr(data-browse);
+}
+.admin option[disabled] {
+    background-color: #f7f7f5;
+    font-style: italic;
+}
+.svg-inline--fa.fa-2x {
+    font-size:1.5em;
+    width: 1em;
+}
+.fa-check-circle {
+    fill:#218838;
+}
+.fa-times-circle {
+    fill:#c82333;
+}
+
+.card-group a.card:hover {
+    text-decoration: none;
+}
+.card-group .card-header {text-align: center}
+.card-group .card-header svg {
+    font-size:4em;
+    height:2em;
+}
+.card-group a.card-header:hover {
+    text-decoration: none;
+    opacity: .7;
+}
+
+.card-group .card-header span {
+   display: block;
+    text-align: center;
+}
+.card-group .card-body {
+    padding:.5rem 1.25rem;
+}
+.card-group .card-body p {
+    line-height: 1;
+}

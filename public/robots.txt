@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /alice_html
+Disallow: /app
+Disallow: /config
+Disallow: /database
+Disallow: /tests
+Disallow: /vendor
+Disallow: /alicegroup.ru.zip
+Disallow: /yandex_06aec74cf26ea087.html
+Disallow: /server.php
+Disallow: /readme.md
+
+
+Host: https://alicegroup.ru/
+Sitemap: https://alicegroup.ru/sitemap.xml

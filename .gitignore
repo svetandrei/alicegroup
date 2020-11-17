@@ -1,0 +1,16 @@
+/node_modules
+/vendor
+/.idea
+alicegroup.tgz
+u0902604_alicegroup.sql
+vendor.zip
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/css
+/js
+*.html
