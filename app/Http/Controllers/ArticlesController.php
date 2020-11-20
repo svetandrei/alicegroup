@@ -2,6 +2,7 @@
 
 namespace Alice\Http\Controllers;
 
+use Alice\Announcement;
 use Alice\Category;
 use Alice\Repositories\ArticlesRepository;
 use Alice\Repositories\CategoryRepository;
@@ -69,7 +70,9 @@ class ArticlesController extends SiteController {
                 JsonLdMulti::setDescription($data['category']->desc);
                 JsonLdMulti::setUrl(false);
             }
-
+        } else {
+            $this->heading = false;
+            $data['announces'] = Announcement::query()->where('publish',1)->get();
         }
 
         $content = view(env('THEME').'.layouts.articlesContent')->with('data', $data)->render();

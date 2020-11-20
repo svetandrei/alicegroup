@@ -61,10 +61,10 @@ return [
         'defaults' => [
             'title'       => '', // set false to total remove
             'description' => '', // set false to total remove
-            //'url'         => \Illuminate\Support\Facades\Request::root(), // Set null for using Url::current(), set false to total remove
+            'url'         => request()->root(), // Set null for using Url::current(), set false to total remove
             'type'        => 'Organization',
             'images'      => [],
-            //'logo'        => url('/images/logo.gif')
+            'logo'        => url('/images/logo.gif')
         ],
     ],
 ];

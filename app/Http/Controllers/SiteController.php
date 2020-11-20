@@ -130,7 +130,7 @@ class SiteController extends Controller
      * @return mixed
      */
     protected function getMenu(){
-        $menu = $this->menuRep->get('*', false, false, [['publish', 1]], false);
+        $menu = $this->menuRep->get('*', false, false, [['publish', 1]], ['sort', 'asc']);
         $mObj = Menu::make('Nav', function($m) use ($menu){
             foreach ($menu as $item){
                 $m->add($item->title, $item->url)->id($item->id);

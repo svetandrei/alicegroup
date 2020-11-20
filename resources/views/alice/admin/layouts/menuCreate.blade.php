@@ -35,6 +35,12 @@
             {!! Form::text('h_title', isset($menu->h_title) ? $menu->h_title : Request::old('h_title'), ['class'=>'form-control', 'id' => 'h_title']) !!}
         </div>
     </div>
+    <div class="col">
+        <div class="form-group">
+            <label for="sort">Сортировка:</label>
+            {!! Form::text('sort', isset($menu->sort) ? $menu->sort : Request::old('sort'), ['class'=>'form-control', 'id' => 'sort']) !!}
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col">
@@ -167,6 +173,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        <h5 class="mb-0">
+                            <div class="custom-control custom-radio">
+                                {!! Form::radio('type', 'stockLink', (isset($type) && $type === 'stockLink') ? TRUE : FALSE,['class' => 'custom-control-input', 'id' => 'typeCustom5']) !!}
+                                {!! Form::label('typeCustom5', 'Раздел акции', ['class' => 'custom-control-label']); !!}
+                            </div>
+                        </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="custom-control mr-auto custom-checkbox">
+                                            {!! Form::checkbox('category-stock', 'stocks', (isset($check['stock']) && $check['stock']) ? $check['stock'] :false, ['class' => 'custom-control-input check-input', 'id' => 'stockCheck'])!!}
+                                            {!! Form::label('stockCheck', 'Ссылка на раздел акции', ['class' => 'custom-control-label']); !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="title">Ссылка на запись акции:</label>
+                                        {!! Form::select('stock-alias', $stocks, (isset($option) && $option) ? $option :FALSE, ['class' => 'form-control', 'placeholder' => 'Не используется']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

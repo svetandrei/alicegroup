@@ -61,6 +61,13 @@ class MenuRepository extends Repository {
                     $data['url'] = route('portfolio');
                 }
                 break;
+            case 'stockLink' :
+                if($request->input('category-stock')) {
+                    $data['url'] = route('stocks');
+                } else if($request->input('stock-alias')) {
+                    $data['url'] = route('stock', ['stock' => $request->input('stock-alias')]);
+                }
+                break;
 
         }
         unset($data['type']);

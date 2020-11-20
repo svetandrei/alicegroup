@@ -46,11 +46,22 @@ Route::get('informations/{category?}', [
         'uses' => 'ArticlesController@index'
 ])->where('category','[\w-]+');
 
+Route::get('stock/', 'StockController@index')->name('stocks');
+Route::get('stock/{stock}', [
+    'as' => 'stock',
+    'uses' => 'StockController@show'
+])->where('stock','[\w-]+');
+
 Route::get('services/', 'ServicesController@index')->name('services');
 Route::get('services/{service}', [
     'as' => 'service',
     'uses' => 'ServicesController@show'
 ])->where('service','[\w-]+');
+
+Route::get('announce/{announce}', [
+    'as' => 'announce',
+    'uses' => 'AnnouncementController@show'
+])->where('announce','[\w-]+');
 
 Route::post('service-form', 'ServicesController@store');
 Route::post('page-form', 'PageController@store');
@@ -69,5 +80,8 @@ Route::group(['middleware' => ['auth','admin'], 'prefix' => 'admin'], function()
     Route::post('/update_file/{id}', 'Admin\PortfolioController@updateFileByID')->name('update_file');
     Route::post('/delete_selected', 'Admin\PortfolioController@delSelectedImages')->name('delete_selected');
     Route::resource('/menu', 'Admin\MenuController');
+    Route::resource('/stock', 'Admin\StockController');
+    Route::resource('/announce', 'Admin\AnnouncementController');
+    Route::resource('/author', 'Admin\AuthorController');
 });
 

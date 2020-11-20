@@ -22,6 +22,14 @@ return [
 
     'thumbnail_services' =>
         ['width'  => 270, 'height' => 180],
+    'thumbnail_announce' =>
+        ['width'  => 300, 'height' => 230],
+    'thumbnail_stock' =>
+        ['width'  => 400, 'height' => 400],
+
+    'cover_stock' =>
+        ['width'  => 1500, 'height' => 400],
+
 
     'thumbnail_category' =>
         ['width'  => 370, 'height' => 250],

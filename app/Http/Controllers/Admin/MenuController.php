@@ -7,10 +7,12 @@ use Alice\Article;
 use Alice\Portfolio;
 use Alice\Repositories\ArticlesRepository;
 use Alice\Repositories\CategoryRepository;
+use Alice\Repositories\DefaultRepository;
 use Alice\Repositories\MenuRepository;
 use Alice\Repositories\PagesRepository;
 use Alice\Repositories\PortfolioRepository;
 use Alice\Repositories\ServicesRepository;
+use Alice\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +21,7 @@ use Menu;
 
 class MenuController extends AdminController
 {
-
+    protected $stockRep;
     public function __construct(MenuRepository $menu,
                                 ServicesRepository $service,
                                 PortfolioRepository $gallery,
@@ -34,6 +36,7 @@ class MenuController extends AdminController
         $this->servicesRep = $service;
         $this->catRep = $category;
         $this->pageRep = $page;
+        $this->stockRep = new DefaultRepository(new Stock());
 
         $this->template = env('THEME').'.admin.menu';
     }
@@ -97,12 +100,19 @@ class MenuController extends AdminController
             return $returnServices;
         }, []);
 
+        $stocks = $this->stockRep->get(['id','title','alias']);
+        $stocks = $stocks->reduce(function ($returnStocks, $stock) {
+            $returnStocks[$stock->alias] = $stock->title;
+            return $returnStocks;
+        }, []);
+
         $portfolios = $this->galleryRep->get(['id','image'])->reduce(function ($returnPortfolios, $portfolio) {
             $returnPortfolios[$portfolio->id] = $portfolio->image;
             return $returnPortfolios;
         }, []);
 
-        $this->content = view(env('THEME').'.admin.layouts.menuCreate')->with(['menus' => $menus,'categories' => $cats, 'articles' => $articles, 'portfolios' => $portfolios, 'services' => $services, 'pages' => $pages])->render();
+        $this->content = view(env('THEME').'.admin.layouts.menuCreate')
+            ->with(['menus' => $menus, 'categories' => $cats, 'articles' => $articles, 'portfolios' => $portfolios, 'services' => $services, 'pages' => $pages, 'stocks' => $stocks])->render();
         return $this->renderOutput();
 
     }
@@ -184,7 +194,17 @@ class MenuController extends AdminController
         }else if($aliasRoute == 'portfolio') {
             $type = 'galleryLink';
             $check['gallery'] = true;
+        }else if($aliasRoute == 'stocks') {
+            $type = 'stockLink';
+            $option = 'stock';
+            $check['stock'] = true;
+
+        }else if($aliasRoute == 'stock.show') {
+            $type = 'stockLink';
+            $option = isset($parameters['alias']) ? $parameters['alias'] : '';
+
         }
+
 
         $tmp = $this->getNav()->all();
 
@@ -222,12 +242,19 @@ class MenuController extends AdminController
             return $returnServices;
         }, []);
 
+        $stocks = $this->stockRep->get(['id','title','alias']);
+        $stocks = $stocks->reduce(function ($returnStocks, $stock) {
+            $returnStocks[$stock->alias] = $stock->title;
+            return $returnStocks;
+        }, []);
+
         $portfolios = $this->galleryRep->get(['id','image'])->reduce(function ($returnPortfolios, $portfolio) {
             $returnPortfolios[$portfolio->id] = $portfolio->image;
             return $returnPortfolios;
         }, []);
 
-        $this->content = view(env('THEME').'.admin.layouts.menuCreate')->with(['menu' => $menu, 'type' => $type, 'check' => $check, 'option' => $option, 'menus' => $menus,'categories' => $cats, 'articles' => $articles, 'portfolios' => $portfolios, 'services' => $services, 'pages' => $pages])->render();
+        $this->content = view(env('THEME').'.admin.layouts.menuCreate')
+            ->with(['menu' => $menu, 'type' => $type, 'check' => $check, 'option' => $option, 'menus' => $menus,'categories' => $cats, 'articles' => $articles, 'portfolios' => $portfolios, 'services' => $services, 'pages' => $pages, 'stocks' => $stocks])->render();
         return $this->renderOutput();
     }
 

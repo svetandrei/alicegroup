@@ -32,10 +32,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/css/lightgallery.css" integrity="sha256-LvrAcvFsV6d8qTupmF/43JY8J0gB1hKVs8Hm2rAlcHc=" crossorigin="anonymous" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.12/js/lightgallery-all.min.js" integrity="sha256-w14QFJrxOYkUnF0hb8pVFCSgYcsF0hMIKrqGb8A7J8A=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-
-</script>
-<div class="container">
+<div class="container our-work">
     <div class="row mb-5">
         <div class="col-md-12">
             <div class="heading text-center py-5">
@@ -79,17 +76,15 @@
                 }
             }
         });
-        $(document).ready(function() {
-            $("#carousel").lightGallery({
-                selector: '.item',
-                thumbnail: false,
-                animateThumb: false,
-                showThumbByDefault: false,
-                autoplayControls: false,
-                share: false,
-                actualSize: false,
-                fullScreen: false
-            });
+        $("#carousel").lightGallery({
+            selector: '.item',
+            thumbnail: false,
+            animateThumb: false,
+            showThumbByDefault: false,
+            autoplayControls: false,
+            share: false,
+            actualSize: false,
+            fullScreen: false
         });
     </script>
 @endif

@@ -1,3 +1,34 @@
+@if (isset($data['announces']))
+<script src="{{ asset(env('THEME').'/js/owl.carousel.min.js') }}"></script>
+<link rel="stylesheet" href="{{ asset(env('THEME').'/css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset(env('THEME').'/css/owl.carousel.min.css') }}">
+<div class="content d-flex justify-content-center cover pt-4 announces">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="w-100">
+                    <div id="carousel" class="owl-carousel owl-theme owl-loaded owl-drag">
+                        @foreach ($data['announces'] as $key => $item)
+                            <div>
+                                <div class="card">
+                                    <a href="{{route('announce', $item->alias)}}">
+                                        {!! Html::image(Storage::url($item->image), $item->title) !!}
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $item->title }}</h5>
+                                            <p class="card-text"><small class="text-muted">{{ $item->author['title'] }}</small></p>
+                                        </div>
+                                        <button type="button" class="btn btn-light">Подробнее</button>
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 <div class="container">
     @if ($data['categories'])
     <div class="content mx-auto py-5">
@@ -55,5 +86,29 @@
             @endforeach
         </div>
     @endif
-
 </div>
+<script type="text/javascript">
+    $('#carousel').owlCarousel({
+        lazyLoad: true,
+        margin:30,
+        dots: false,
+        nav: true,
+        autoplay: true,
+        responsive:{
+            0:{
+                items:2,
+                nav:false,
+                dots: true
+            },
+            600:{
+                items:3,
+                nav:true
+            },
+            1000:{
+                items:5,
+                nav:true,
+                loop:false
+            }
+        }
+    });
+</script>
