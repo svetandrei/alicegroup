@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{ asset(env('THEME').'/css/owl.carousel.min.css') }}">
 <div class="content d-flex justify-content-center cover pt-4 announces">
     <div class="container">
+        <h2>Книги наших авторов</h2>
         <div class="row mb-5">
             <div class="col-md-12">
                 <div class="w-100">
@@ -31,7 +32,8 @@
 @endif
 <div class="container">
     @if ($data['categories'])
-    <div class="content mx-auto py-5">
+    <div class="content mx-auto py-5 list-articles">
+        <h2 class="text-center mb-5">Блог</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
             @foreach($data['categories'] as $item)
             <div class="col mb-4">

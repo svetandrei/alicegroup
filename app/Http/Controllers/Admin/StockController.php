@@ -172,7 +172,7 @@ class StockController extends AdminController
             $data['image'] = $this->repo->checkFile($request->file('file'), true, $route, 'thumbnail');
         }
         if ($request->hasFile('cover')) {
-            $data['cover'] = $this->repo->checkFile($request->file('cover'), true, $route, 'cover');
+            $data['cover'] = $this->repo->checkFile($request->file('cover'), false, $route, '');
         }
 
         if ($alias){

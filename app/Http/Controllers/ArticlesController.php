@@ -72,7 +72,7 @@ class ArticlesController extends SiteController {
             }
         } else {
             $this->heading = false;
-            $data['announces'] = Announcement::query()->where('publish',1)->get();
+            $data['announces'] = Announcement::query()->where('publish',1)->orderByRaw('RAND()')->get();
         }
 
         $content = view(env('THEME').'.layouts.articlesContent')->with('data', $data)->render();

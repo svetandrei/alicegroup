@@ -608,6 +608,10 @@ a.tech-service {
     font-size: 18px;
     color: #000000;
 }
+.announces h2 {
+    color: #ffffff;
+    text-align: center;
+}
 .announces .card {background: none;}
 .announces .card a {
     text-decoration: none;
@@ -1173,7 +1177,7 @@ header .d-phone svg path {
     .start-modal .modal-body, .service-modal .modal-body {
         padding-top:0;
         padding-left: 1rem;
-        padding-right: 1rem;
+        padding-right: 1announcesrem;
     }
     .start-modal .modal-title, .service-modal .modal-title {font-size: 30px;}
     #accordion .btn,
